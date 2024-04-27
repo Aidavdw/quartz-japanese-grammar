@@ -1,0 +1,4 @@
+---
+tags:
+  - part-of-speech
+---
