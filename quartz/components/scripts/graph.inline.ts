@@ -152,8 +152,10 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return "var(--secondary)"
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+    } else if (d.id.startsWith("tags/")) {
       return "var(--tertiary)"
+    } else if (d.tags.includes("particle")) {
+      return "#56B4E9"
     } else {
       return "var(--gray)"
     }
@@ -177,7 +179,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       d.fy = null
     }
 
-    const noop = () => {}
+    const noop = () => { }
     return d3
       .drag<Element, NodeData>()
       .on("start", enableDrag ? dragstarted : noop)
